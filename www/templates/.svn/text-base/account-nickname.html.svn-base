@@ -1,0 +1,13 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <ion-content class="no-padding">
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="昵称" ng-model="nickname">
+      </label>
+    </div>
+
+    <div class="padding">
+      <button class="button button-block button-positive" ng-click="updateNickname(nickname)">保存</button>
+    </div>
+  </ion-content>
+</ion-view>

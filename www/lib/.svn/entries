@@ -1,0 +1,43 @@
+10
+
+dir
+2190
+svn://www.tuozhai8.com:10001/pudding/mobile/juJiaBao/www/lib
+svn://www.tuozhai8.com:10001
+
+
+
+2015-05-05T05:37:50.043200Z
+2189
+lizhigang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f15ff2ce-9ed1-11e4-a36f-37e3ffdc1c12
+
+angular
+dir
+
+angular-animate
+dir
+
+angular-sanitize
+dir
+
+angular-ui-router
+dir
+
+ionic
+dir
+

@@ -1,0 +1,93 @@
+<ion-view view-title="{{ title }}" cache-view="false" show-tabs>
+  <ion-nav-buttons side="right">
+    <a href="#/tab/tomorrow" class="button icon-right ion-ios-arrow-right button-clear" ng-hide="hideBarButton">明日预告</a>
+  </ion-nav-buttons>
+  <ion-content class="padding" style="padding-top: 0;">
+    <ion-refresher style="top:-60px;" pulling-text="下拉刷新..." pulling-icon="ion-ios-arrow-thin-up" on-refresh="doRefresh()"></ion-refresher>
+
+    <ion-slide-box class="top-ad-slider" does-continue="true" auto-play="true" slide-interval="3000" on-slide-changed="slideHasChanged($index)" show-pager='false'>
+      <ion-slide>
+        <div class="ad-block">
+          <i class="icon ion-ios-clock-outline"></i>
+          <span>{{ bookStr }}</span>
+          <span class="split">|</span>
+          <span>{{ deliveryStr }}</span>
+        </div>
+      </ion-slide>
+      <ion-slide style="{{ ad.background }}" ng-repeat="ad in topAd">
+        <div class="img-wrapper">
+          <a href="#/tab/ad/{{ ad.id }}"><img ng-src="{{ imgHost }}{{ ad.imgPhone }}"></a>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <div class="list card" ng-repeat="miao in miaoSha">
+      <div class="item item-image">
+        <a href=""><img ng-src="{{ imgHost }}{{ miao.logo }}"></a>
+        <div class="logo-mask"><span>已售罄</span></div>
+        <div class="cover-footer">
+          <img class="ms" src="img/ms.png">
+          <span class="arrow"></span>
+
+          <div class="time">
+            <p class="ct" ng-if="miao.status||miao.needct">{{ miao.duration }} 后{{ miao.lab }}</p>
+            <p class="ct" ng-if="!miao.status&&!miao.needct">{{ miao.msg }}</p>
+            <p class="se">{{ miao.time }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:15px 15px 10px 15px;border-bottom:1px solid #f3f3f3;color:#6e7d83;">
+        <p style="margin-bottom:0;font-size:22px;line-height:26px;">{{ miao.name }}</p>
+        <p style="margin-bottom:0;">{{ miao.memo }}</p>
+        <p style="margin-bottom:0; color:#ff4200;">限量:{{ miao.inventory }}份</p>
+      </div>
+
+      <div class="item item-foot" style="padding-bottom:10px;padding-top:0;margin-top:15px;">
+        <div class="row" style="border-bottom:0;">
+          <div class="col" style="padding-right:0;">
+            <p class="low-price">&yen; {{ miao.price }}元/份</p>
+            <p class="high-price">市场价: {{ miao.marketPrice }}元</p>
+          </div>
+          <div class="col a-right" style="padding-left:0;flex:0 0 55%;">
+            <span class="button order-now" ng-click="activityAction('{{ miao.id }}')" ng-disabled="!miao.status">马上秒杀</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list card" ng-repeat="item in list" ng-class="{'has-sold': item.sellOut}">
+      <div class="item item-image">
+        <a href="#/tab/item/{{item.weekId}}"><img ng-src="{{ imgHost }}{{ item.logo }}"></a>
+        <div class="logo-mask"><span>已售罄</span></div>
+      </div>
+
+      <div class="item item-title">
+        <h2>{{ item.setTypeName }}</h2>
+      </div>
+
+      <div class="item item-header">
+        <h4 style="word-wrap:break-word;white-space:pre-wrap;font-weight:500;">{{ item.name }}</h4>
+        <p style="font-size:13px;font-weight:400;margin-bottom:0;">{{ leftTime }}</p>
+        <p style="font-size:12px;">
+          <span>{{ item.saleMsg }}</span><span style="border-left:1px solid #d6d6d6;margin:0 10px;"></span><span class="store-count">{{ item.remainMsg }}</span>
+        </p>
+      </div>
+
+      <div class="item item-foot">
+        <div class="row">
+          <div class="col" style="padding-right:0;">
+            <p class="low-price">&yen; {{ item.price }}元/份</p>
+            <p class="high-price">市场价: {{ item.marketPrice }}元</p>
+          </div>
+          <div class="col a-right" style="padding-left:0;flex:0 0 60%;">
+            <span ng-if="!item.sellOut" class="button order-now" ng-click="addCart(item.id)" ng-disabled="orderDisabled">立即订购</span>
+            <span ng-if="item.sellOut" class="button order-now" disabled>已售罄</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:25px;"></div>
+  </ion-content>
+</ion-view>

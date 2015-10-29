@@ -1,0 +1,22 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <ion-content class="no-padding ad-detail-container">
+    <div>
+      <div ng-repeat="section in content">
+        <img ng-if="section.type=='img'" ng-src="{{ imgHost }}{{ section.content }}">
+        <p ng-if="section.type=='text'">{{ section.content }}</p>
+      </div>
+
+      <div style="margin-top:10px;">
+        <div ng-if="needUpgrade">
+          <p style="text-align:center;color:#ff4200;">{{ unsupportMsg }}</p>
+          <span class="button button-positive" ng-click="upGrade()">升级应用</span>
+        </div>
+        <div ng-if="!needUpgrade">
+          <span class="button button-positive" ng-click="adAction()" ng-if="button">{{ button.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:30px;"></div>
+  </ion-content>
+</ion-view>

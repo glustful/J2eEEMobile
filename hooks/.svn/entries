@@ -1,0 +1,77 @@
+10
+
+dir
+2190
+svn://www.tuozhai8.com:10001/pudding/mobile/juJiaBao/hooks
+svn://www.tuozhai8.com:10001
+
+
+
+2015-02-01T03:35:31.203918Z
+352
+lizhigang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f15ff2ce-9ed1-11e4-a36f-37e3ffdc1c12
+
+README.md
+file
+
+
+
+
+2015-05-05T09:12:00.000000Z
+1236d32962663abb261e838565e461f4
+2015-01-24T12:59:36.327840Z
+160
+lizhigang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3018
+
+after_platform_add
+dir
+
+after_plugin_add
+dir
+
+after_plugin_rm
+dir
+
+after_prepare
+dir
+
+before_platform_add
+dir
+

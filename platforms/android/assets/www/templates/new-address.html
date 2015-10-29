@@ -1,0 +1,55 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <ion-nav-buttons side="right">
+    <span ng-click="saveAddress(user)" class="button button-clear">保存</span>
+  </ion-nav-buttons>
+  <ion-content class="no-padding">
+    <ion-list class="list new-address">
+      <ion-item class="item address-section item-icon-right" ng-click="getAddressSection(1)">
+        <p class="value">{{ levelOneRegion.name }}</p>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+
+      <ion-item class="item address-section item-icon-right" ng-click="getAddressSection(2, levelOneRegion)" ng-show="levelTwoRegion">
+        <p class="value">{{ levelTwoRegion.name }}</p>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+
+      <ion-item class="item address-section item-icon-right" ng-click="getAddressSection(3, levelTwoRegion)" ng-show="levelThreeRegion">
+        <p class="value">{{ levelThreeRegion.name }}</p>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+
+      <ion-item class="item address-section item-icon-right" ng-click="getAddressSection(4, levelThreeRegion)" ng-show="levelFourRegion">
+        <p class="value">{{ levelFourRegion.name }}</p>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </ion-list>
+
+
+    <div class="list" ng-show="hasRegion">
+      <label class="item item-input" style="border-top:0;">
+        <input type="number" placeholder="楼层" ng-model="address.floor">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="详细地址" ng-model="address.manualAddress">
+      </label>
+    </div>
+
+    <div class="spacer" style="height: 20px;"></div>
+
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="联系人" ng-model="address.contact">
+      </label>
+      <label class="item item-input">
+        <input type="tel" placeholder="电话" ng-model="address.mobile">
+      </label>
+      <div style="height:1px;visibility:hidden;">
+        <label class="item item-input">
+        	<input type="text">
+      	</label>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

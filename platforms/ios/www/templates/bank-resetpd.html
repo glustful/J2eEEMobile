@@ -1,0 +1,25 @@
+<ion-view view-title="{{ title }}" cache-view="false" show-tabs>
+  <ion-content class="padding" style="padding: 0 0 35px 0;background-color:white;">
+    <div class="list" style="padding:0 20px;margin-top:30px;">
+      <label class="item item-input" style="border-radius:3px;margin-bottom:40px;position:relative;overflow:visible;background-color:#f4f5ea;">
+        <input type="password" placeholder="请输入原始密码" ng-model="password.oldpd">
+      </label>
+    </div>
+
+    <div style="border-top:1px solid #efefef;margin: 0 20px;"></div>
+
+    <div class="list" style="padding:0 20px;margin-top:30px;">
+      <label class="item item-input" style="border-radius:3px;margin-bottom:50px;position:relative;overflow:visible;background-color:#f4f5ea;">
+        <input type="password" placeholder="请输入新密码" ng-model="password.newpd1">
+        <span style="position: absolute;left: 0;bottom: -40px;font-size: 13px;color: #666;word-wrap: break-word;word-break: break-all;white-space: pre-wrap;right: 0;">交易密码必须至少6位</span>
+      </label>
+      <label class="item item-input" style="border-radius:3px;background-color:#f4f5ea;">
+        <input type="password" placeholder="请再次输入新密码" ng-model="password.newpd2">
+      </label>
+    </div>
+
+    <div style="padding:0 20px;margin-top:50px;">
+      <button style="background-color:#ffd637;color:#81511c;border:0;" ng-click="setPassword()" class="button button-block">确认并修改密码</button>
+    </div>
+  </ion-content>
+</ion-view>

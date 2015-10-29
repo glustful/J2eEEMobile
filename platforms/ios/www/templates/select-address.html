@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">选择地址</h1>
+    <span class="button button-light button-assertive button-small" ng-click="confirmAddress(tempAddress)">确定</span>
+  </ion-header-bar>
+  <ion-content class="no-padding">
+    <form>
+      <div class="list">
+        <label class="item item-radio" ng-repeat="address in addressList">
+          <input type="radio" name="address" ng-value="address.id" ng-model="defaultAddressId" ng-click="changeAddress(address)">
+          <div class="item-content">
+            <p>收货人：{{ address.name }}</p>
+            <p>电话：{{ address.mobile }}</p>
+            <p class="address">送餐地址：{{ address.address }}</p>
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

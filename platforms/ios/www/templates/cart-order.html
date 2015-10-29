@@ -1,0 +1,48 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <ion-nav-buttons side="right">
+    <button ng-click="backOrder()" class="button button-clear">关闭</button>
+  </ion-nav-buttons>
+  <ion-content class="no-padding cart-content cart-order-content">
+    <div>
+      <div>
+        <p style="margin-bottom:0;line-height:48px;font-size:16px;padding-left:16px;">订单号: {{ orderNum }}</p>
+      </div>
+    </div>
+    <div class="list item-thumbnail-left item-cart" style="padding-top: 0;">
+      <div class="item item-food" ng-repeat="item in cartList">
+        <div class="row">
+          <div class="col">
+            <img class="cover" ng-src="{{ imgHost }}{{ item.logo }}">
+          </div>
+          <div class="col col-75">
+            <p class="food-name">{{ item.typeName }}</p>
+            <p class="food-desc">{{ item.setTitle }}</p>
+            <p class="food-price">&yen; {{ item.price }}</p>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom:0;">
+          <div class="col"></div>
+          <div class="col col-75" style="text-align:right;">
+            <span style="display: inline-block;font-size: 13px;margin-top: 8px;margin-right: 2px;vertical-align: top;">购买数量</span>
+            <input class="food-count" type="text" value="{{ item.count }}"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list" style="margin-bottom:0;">
+      <div class="item item-address" style="border-bottom:0;">
+        <p>收货人：{{ contact }}</p>
+        <p>电话：{{ mobile }}</p>
+        <p class="address">送餐地址：{{ address }}</p>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="row cart-header order-header" style="bottom:0;">
+    <div class="col col-75">
+      <p style="line-height:60px;font-weight:bold;">共 {{ totalOrderCount }} 份 / 实付款: &yen; {{ totalPrice | number:2 }}元</p>
+    </div>
+    <div class="col" style="text-align:right;line-height:60px;"><span ng-click="orderPay()" class="pay-now">付款</span></div>
+  </div>
+</ion-view>

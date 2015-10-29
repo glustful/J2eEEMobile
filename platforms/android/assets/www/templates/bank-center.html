@@ -1,0 +1,48 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <ion-nav-buttons side="right">
+    <a href="#/tab/setting/bank/manage" class="button icon-right ion-ios-arrow-right button-clear">充值管理</a>
+  </ion-nav-buttons>
+  <ion-content class="no-padding" style="background-color:#ff4200;text-align:center;padding-top:30px;" ng-show="needSetPd">
+    <div style="color:white;">
+      <p style="color:#ffd637;font-size:16px;">乖宝，欢迎进入 <span style="font-weight:bold;">充值中心</span></p>
+      <p style="margin-bottom:8px;">为了确保您的交易安全</p>
+      <p style="font-size:26px;">请设置交易密码</p>
+    </div>
+
+    <div class="list" style="padding:0 20px;margin-top:30px;">
+      <label class="item item-input" style="border-radius:3px;margin-bottom:50px;position:relative;overflow:visible;">
+        <input type="password" placeholder="请输入交易密码" ng-model="password.pd1">
+        <span style="position: absolute;left: 0;bottom: -40px;font-size: 13px;color: #ffd637;word-wrap: break-word;word-break: break-all;white-space: pre-wrap;right: 0;">交易密码必须至少6位</span>
+      </label>
+      <label class="item item-input" style="border-radius:3px;">
+        <input type="password" placeholder="请再次输入交易密码" ng-model="password.pd2">
+      </label>
+    </div>
+
+    <div style="padding:0 20px;margin-top:50px;">
+      <button style="background-color:#ffd637;color:#81511c;border:0;" ng-click="setPassword()" class="button button-block">设置密码</button>
+    </div>
+  </ion-content>
+
+  <ion-content class="no-padding" style="" ng-show="hasAccount">
+    <div style="background-color:white;padding:30px 60px;color:#ff4200;border-bottom:1px solid #dfdede;">
+      <p style="font-size:16px;">余额</p>
+      <p style="font-size:38px;">{{ account.wallet.validAmount }}</p>
+      <p style="color:#666;">冻结金额： {{ account.wallet.frozenAmount }}</p>
+    </div>
+
+    <div style="text-align:center;margin:15px 0;">
+      <p><span style="color:#ff4200;">乖宝，多充多优惠！</span><span style="color:#666;">请选择充值方式</span></p>
+    </div>
+
+    <div style="padding: 0 20px;">
+      <div class="chong-item" ng-repeat="list in account.setList" ng-click="doRecharge(list.id)">
+        <i class="icon ion-social-usd"></i>
+        <!--
+        <p><span style="color:white;">充{{ list.amount }}</span> <span style="color:#ffd637;">送{{ list.gift }}</span></p>
+         -->
+        <p><span style="color:#ffd637;">{{ list.name }}</span></p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

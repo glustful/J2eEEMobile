@@ -1,0 +1,46 @@
+<ion-view view-title="注册" cache-view="false">
+  <ion-content padding="true" class="has-header">
+    <form class="signup-form">
+      <div class="list">
+        <label class="item item-input">
+          <input type="tel" placeholder="手机号" ng-model="data.mobile" ng-change="verifyForm()">
+        </label>
+
+        <div class="item item-divider"></div>
+
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="短信验证码" ng-model="data.code" ng-change="verifyForm()">
+          </label>
+          <span ng-click="getSms(data)" class="button button-stable button-block" ng-disabled="disableSms"><span ng-model="smsCountDown">{{ smsCountDown }}</span>发送短信验证码</span>
+        </div>
+
+        <div class="item item-divider"></div>
+
+        <label class="item item-input">
+          <input type="password" placeholder="密码" ng-model="data.password" ng-change="verifyForm()">
+        </label>
+
+        <div class="item item-divider"></div>
+
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="昵称" ng-model="data.nickname" ng-change="verifyForm()">
+          </label>
+        </div>
+
+        <div class="item item-divider"></div>
+
+        <div class="item item-input-inset">
+          <label class="checkbox">
+            <input type="checkbox" ng-model="data.agreement" ng-change="verifyForm()">
+          </label>
+          <span ng-click="getAgreement()" style="font-size:13px;cursor:pointer;">我已阅读并接受《居家宝用户协议》</span>
+        </div>
+      </div>
+
+      <div class="spacer" style="height: 40px;"></div>
+      <span ng-click="goSignupAddress()" class="button button-stable button-block" ng-disabled="!isValid">下一步（填写送餐信息）</span>
+    </form>
+  </ion-content>
+</ion-view>

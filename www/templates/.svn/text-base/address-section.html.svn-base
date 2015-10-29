@@ -1,0 +1,16 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title" ng-model="regionTitle">{{ regionTitle }}</h1>
+  </ion-header-bar>
+  <ion-content class="no-padding">
+    <form>
+      <div class="list">
+        <label class="item item-radio" ng-repeat="data in section">
+          <input type="radio" name="address" ng-click="selectRegion(data)">
+          <div class='item-content'>{{ data.name }}</div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

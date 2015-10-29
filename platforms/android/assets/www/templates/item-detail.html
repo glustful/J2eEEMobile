@@ -1,0 +1,56 @@
+<ion-view view-title="{{ item.setTypeName }}" cache-view="false" hide-tabs>
+  <ion-nav-buttons side="right">
+    <a href="#/tab/comment/{{ item.id }}" class="button icon-left ion-ios-chatbubble-outline button-clear" ng-show="item.commentCount">{{ item.commentCount }}</a>
+  </ion-nav-buttons>
+  <ion-content class="no-padding item-detail">
+    <ion-slide-box show-pager="true" class="slide-box top-slide">
+      <ion-slide ng-repeat="ad in item.multiImgPaths">
+        <div><img ng-src="{{ imgHost }}{{ ad }}"></div>
+      </ion-slide>
+    </ion-slide-box>
+    <div class="row slide-foot">
+      <div class="col col-33" style="padding-left:2px;padding-right:2px;">{{ item.saleMsg }}</div>
+      <div class="col" style="text-align:right;padding-left:2px;padding-right:2px;" ng-show="leftTime">{{ leftTime }}</div>
+    </div>
+
+    <div class="list card category" ng-repeat="category in item.foodDetailList">
+      <div class="item desc">
+        <h2 class="{{ category.style }}"><span class="split"></span>{{ category.name }}</h2>
+        <p style="word-wrap:break-word;white-space:pre-wrap;margin-top:8px;">口味：{{ category.taste }}</p>
+        <p style="word-wrap:break-word;white-space:pre-wrap;">用料：{{ category.materials }}</p>
+      </div>
+
+      <div class="item item-image">
+        <img ng-src="{{ imgHost }}{{ category.logo }}">
+      </div>
+    </div>
+
+    <div class="ads">
+      <div><img ng-src="img/delicious.gif"></div>
+      <div style="margin-bottom:10px;"><img ng-src="img/safety.gif"></div>
+      <div style="border-bottom:1px solid #d5d7cb;padding-bottom:20px;margin-bottom:20px;">
+        <ion-slide-box show-pager="true" class="slide-box">
+          <ion-slide><img src="img/c1.jpg"></ion-slide>
+          <ion-slide><img src="img/c2.jpg"></ion-slide>
+          <ion-slide><img src="img/c3.jpg"></ion-slide>
+          <ion-slide><img src="img/c4.jpg"></ion-slide>
+        </ion-slide-box>
+      </div>
+      <div><img ng-src="img/healthy.gif"></div>
+      <div ng-class="{'detail-padding': canOrder}"><img ng-src="img/quick.gif"></div>
+    </div>
+  </ion-content>
+
+  <div class="detail-foot" ng-show="canOrder">
+    <div class="row">
+      <div class="col">
+        <p class="low">&yen; {{ item.price }}元/份</p>
+        <p class="high">市场价: {{ item.marketPrice }}元</p>
+      </div>
+      <div class="col" style="text-align:right;">
+        <span class="order-btn" ng-click="addCart(item.id)">立即订餐</span>
+      </div>
+    </div>
+  </div>
+</ion-view>
+

@@ -1,0 +1,52 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <ion-content class="no-padding" style="background:white;">
+    <div>
+      <div style="text-align:center;padding-top:20px;">
+        <img style="width:228px;" src="img/logo.png">
+        <img style="width:268px;margin-top:32px;" src="img/logo-2.png">
+      </div>
+
+      <div style="padding:30px 35px 10px 35px;color: #333;">
+        <p style="margin-bottom:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;云南大伙房餐饮服务有限公司是一家专门从事午餐外送的餐饮公司，自建了上千平方米的中央厨房，配备一流的厨师团队，采用高标准的质检要求，严格把控原材料的同时，每一套环节都有严格的质检标准。</p>
+        <p style="margin-bottom:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了每一道环节都能严格把控，更是集生产、销售和配送于一体。</p>
+        <p style="margin-bottom:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们采用网站订餐和手机APP订餐两大平台的时尚订购方式，让您享受每一份午餐的同时，都能做到安全、放心、实惠、美味、快捷。</p>
+        <p style="margin-bottom:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一个环节都注重更加人性化，让每一位顾客满意，是我们永远的追求。</p>
+
+        <p style="border-bottom:1px solid #ddd;"></p>
+      </div>
+
+      <div style="padding:0 35px 30px 35px;text-align:center;color:#d91319;">
+        <p>订餐时间：我们每天8:00-11:30接受预定</p>
+        <p>送达时间：我们中午12:00-1:00为您送达</p>
+        <p style="border-bottom:1px solid #ddd;height:5px;"></p>
+      </div>
+
+      <div style="width:180px;margin:auto;text-align:center;margin-bottom:30px;color: #333;">
+        <p style="font-weight:bold;font-size:15px;">公司地址：</p>
+        <p style="margin-bottom:0;">昆明新亚洲体育城</p>
+        <p>星都总部基地62栋1102室</p>
+      </div>
+
+      <div style="width:180px;margin:auto;text-align:center;margin-bottom:30px;color: #333;">
+        <p style="font-weight:bold;font-size:15px;">中央厨房地址：</p>
+        <p style="margin-bottom:0;">昆明新螺蛳湾国际商贸城</p>
+        <p style="margin-bottom:0;">小商品加工基地一期</p>
+        <p>产业项目B4栋B4-101号房</p>
+      </div>
+
+      <div style="width:180px;margin:auto;text-align:center;color: #333;">
+        <p style="font-weight:bold;font-size:15px;">服务监督电话：</p>
+        <p>0871-67363700</p>
+      </div>
+
+      <div ng-repeat="item in budinglist">
+        <div class="row">
+            <img style="{{ item.style }}" ng-show="'{{ item.type }}' === 'i'" ng-src="{{ imgHost }}{{ item.value }}">
+            <p  style="{{ item.style }}" ng-show="'{{ item.type }}' === 'p'">{{ item.value }}</p>
+        </div>
+      </div>
+        
+      <div style="height:30px;"></div>
+    </div>
+  </ion-content>
+</ion-view>

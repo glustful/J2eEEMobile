@@ -1,0 +1,28 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <ion-nav-buttons side="right">
+    <span ng-click="orderComment()" class="button button-clear">提交评论</a>
+  </ion-nav-buttons>
+  <ion-content class="no-padding">
+    <ion-list class="list order-list order-comment-list" ng-repeat="data in dataList">
+      <ion-item class="item order-item">
+        <div class="row">
+          <div class="col">
+            <img class="food-cover" ng-src="{{ imgHost }}{{ data.logo }}">
+          </div>
+          <div class="col col-75">
+            <p class="food-name">{{ data.typeName }}</p>
+            <p class="food-desc">{{ data.setTitle }}</p>
+            <div class="row" style="padding:0;">
+              <div class="col" style="padding:0;">&yen; {{ data.price }}</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding-top: 5px;border-top: 1px solid #eaeaea;">
+          <label class="item item-input">
+            <input type="text" placeholder="评论" ng-model="data.comment" ng-trim="true">
+          </label>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-view view-title="{{ title }}" cache-view="false" show-tabs>
+  <ion-content class="padding" style="padding: 0 0 35px 0;background-color:white;">
+    <div class="list" style="padding:0 20px;margin-top:30px;">
+      <label class="item item-input" style="border-radius:3px;margin-bottom:40px;position:relative;overflow:visible;background-color:#f4f5ea;">
+        <input type="text" placeholder="注册时使用的手机号码" ng-model="data.userName">
+      </label>
+    </div>
+
+    <div style="border-top:1px solid #efefef;margin: 0 20px;"></div>
+
+    <div class="list" style="padding:0 20px;margin-top:30px;">
+      <label class="item item-input" style="border-radius:3px;background-color:#f4f5ea;margin-bottom:20px;">
+        <input type="text" placeholder="请输入验证码" ng-model="data.verifyCode">
+      </label>
+      <span class="button button-small" ng-click="sendMsg()" style="border:0;background-color:#ff4200;color:white;position:absolute;top: 9px;right: 28px;z-index: 9999;">发送验证码</span>
+
+      <label class="item item-input" style="border-radius:3px;margin-bottom:50px;position:relative;overflow:visible;background-color:#f4f5ea;">
+        <input type="password" placeholder="请输入新密码" ng-model="data.newPass">
+        <span style="position: absolute;left: 0;bottom: -40px;font-size: 13px;color: #666;word-wrap: break-word;word-break: break-all;white-space: pre-wrap;right: 0;">交易密码必须至少6位</span>
+      </label>
+
+    </div>
+
+    <div style="padding:0 20px;margin-top:50px;">
+      <button style="background-color:#ffd637;color:#81511c;border:0;" ng-click="findPassword()" class="button button-block">重置密码</button>
+    </div>
+  </ion-content>
+</ion-view>

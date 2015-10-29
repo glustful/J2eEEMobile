@@ -1,0 +1,16 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">用户协议</h1>
+    <span class="button button-light button-assertive button-small" ng-click="closeAgreement()">关闭</span>
+  </ion-header-bar>
+  <ion-content class="no-padding">
+    <div class="agreement-content">
+      <div class="agreement" ng-repeat="ag in data.agreement">
+        <p class="main-agree-txt">{{ ag.txt }}</p>
+        <div class="child-agreement" ng-repeat="child in ag.child">
+          <p class="child-agree-txt">{{ child.txt }}</p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

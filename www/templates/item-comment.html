@@ -1,0 +1,21 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <ion-content class="no-padding comment-list">
+    <ion-refresher pulling-text="下拉刷新..." pulling-icon="ion-ios-arrow-thin-up" on-refresh="doRefresh()"></ion-refresher>
+    <div class="list" ng-repeat="comment in commentList">
+      <div class="item">
+        <div class="row">
+          <img ng-src="{{ imgHost }}{{ comment.user.logo }}" class="avatar">
+          <div style="margin-left: 25px;margin-top: 2px;">
+            <h3 class="nickname">{{ comment.nickname }}</h3>
+            <p class="time">{{ comment.createTimeStr }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <p class="content">{{ comment.summary }}</p>
+        </div>
+      </div>
+    </div>
+
+    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" icon="ion-loading-c" on-infinite="loadMore()"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

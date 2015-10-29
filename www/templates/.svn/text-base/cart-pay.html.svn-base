@@ -1,0 +1,44 @@
+<ion-view view-title="{{ title }}" cache-view="false" show-tabs>
+  <ion-nav-buttons side="right">
+    <button ng-click="backOrder()" class="button button-clear">关闭</button>
+  </ion-nav-buttons>
+
+  <ion-content class="padding" style="padding: 0 0 35px 0;background-color:white;">
+    <div class="row" style="background-color:#f4f5ea;color:#666;">
+      <div class="col" style="padding:10px 20px;">请选择支付方式</div>
+      <div class="col" style="padding:10px 20px;;text-align:right;">应付 <span style="color:#ff4200;">{{ data.toPay }}元</span></div>
+    </div>
+
+    <div style="padding: 20px;">
+      <div>
+        <i class="icon ion-social-usd" style="color:#e1b00b;display:inline-block;width:30px;height:30px;border-radius:15px;background-color:#ffd637;text-align: center;line-height: 30px;"></i>
+        <span style="margin-left:10px;">余额支付</span>
+      </div>
+
+      <div style="padding-left:50px;margin-top:15px;">
+        <p style="color:#ff4200;font-size:18px;">当前余额</p>
+        <p style="color:#ff4200;font-size:28px;">{{ data.wallet.validAmount }}</p>
+        <p>冻结金额: {{ data.wallet.frozenAmount }}</p>
+      </div>
+
+      <div>
+        <p>
+          <span class="button button-block" ng-if="data.walletPayType != 0" ng-click="showPayNow()" style="border:0;background-color:#ff4200;color:white;">立即支付</span>
+        </p>
+        <p>
+          <span class="button button-block" ng-click="goToBank()" style="border:0;background-color:#f4f5ea;">充值享优惠</span>
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <ion-list>
+        <div class="item item-icon-left item-icon-right setting-item" href="#" style="padding-left:20px;" ng-click="orderPay()">
+          <img src="img/zhifubao.png" style="width:78px;vertical-align:top;">
+          <span style="display: inline-block;vertical-align: top;padding-top:5px;margin-left:15px;">支付宝支付</span>
+          <i class="icon ion-ios-arrow-right"></i>
+        </div>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

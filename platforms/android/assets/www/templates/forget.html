@@ -1,0 +1,29 @@
+<ion-view view-title="忘记密码" cache-view="false">
+  <ion-content padding="true" class="has-header">
+    <form class="signup-form">
+      <div class="list">
+        <label class="item item-input">
+          <input type="tel" placeholder="注册的手机号" ng-model="data.mobile">
+        </label>
+
+        <div class="item item-divider"></div>
+
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="短信验证码" ng-model="data.code">
+          </label>
+          <span ng-click="getSms(data)" class="button button-stable button-block" ng-disabled="disableSms"><span ng-model="smsCountDown">{{ smsCountDown }}</span>发送短信验证码</span>
+        </div>
+
+        <div class="item item-divider"></div>
+
+        <label class="item item-input">
+          <input type="password" placeholder="新密码" ng-model="data.password">
+        </label>
+      </div>
+
+      <div class="spacer" style="height: 40px;"></div>
+      <span ng-click="forget(data)" class="button button-stable button-block">重新设置密码</span>
+    </form>
+  </ion-content>
+</ion-view>

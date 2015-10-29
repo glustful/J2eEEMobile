@@ -1,0 +1,74 @@
+<ion-view view-title="{{ title }}" cache-view="false" show-tabs>
+  <ion-content class="no-padding cart-content">
+    <div class="cart-discount" ng-if="hasDiscount">
+      <p ng-repeat="dc in discount" class="dc">
+        <span class="lab">优惠</span>
+        <span class="val">{{ dc.name }}</span>
+      </p>
+    </div>
+
+    <div class="list" style="margin-bottom:0;" ng-show="hasCart()">
+      <div class="item item-icon-right item-address" style="border-bottom:0;background-color:#f7f7f7;" ng-click="selectAddress(selectedAddress)" ng-show="selectedAddress">
+        <p>收货人：{{ selectedAddress.name }}</p>
+        <p>电话：{{ selectedAddress.mobile }}</p>
+        <p class="address">送餐地址：{{ selectedAddress.address }}</p>
+        <i class="icon ion-ios-arrow-right"></i>
+      </div>
+      <div class="item item-icon-right item-address" style="border-bottom:0;" ng-hide="selectedAddress">
+        <p><a style="text-decoration: none;color: #ff4200;" href="#/tab/setting">还没有默认地址，快去添加一个吧。</a></p>
+      </div>
+    </div>
+
+    <div class="list item-thumbnail-left item-cart" ng-repeat="item in cartList.datalist" ng-show="hasCart()">
+      <div class="item item-food">
+        <div class="row">
+          <div class="col">
+            <img class="cover" ng-src="{{imgHost}}{{ item.foodSet.logo }}">
+          </div>
+          <div class="col col-75">
+            <p class="food-name">{{ item.typeName }}</p>
+            <p class="food-desc">{{ item.foodSet.name }}</p>
+            <p class="food-price">&yen; {{ item.foodSet.price }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col col-75" style="text-align:right;">
+            <span style="font-size:13px;margin-right:8px;display:inline-block;margin-top:10px;vertical-align:top;">购买数量</span>
+            <span class="count-action" ng-click="minusCount(item)">-</span>
+            <input class="food-count" readonly type="number" ng-model="item.count" value="{{ item.count }}"/>
+            <span class="count-action" href="#" ng-click="addCount(item)">+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:100px;"></div>
+  </ion-content>
+
+  <div class="row cart-header" ng-show="hasCart()" ng-class="{'has-discount': hasDiscount}">
+    <div class="col col-67">
+      <p class="p1">
+        共 {{ cartList.cnt }} 份/<span style="font-weight:bold;">合计: &yen; {{ afterDiscount | number:2 }}元</span>
+      </p>
+      <p ng-if="hasDiscount">
+        总额：&yen;{{ cartList.sum | number:2 }}元，优惠：&yen;{{ discountAmount | number:2 }}
+      </p>
+    </div>
+    <div class="col" style="text-align:right;"><span ng-click="submitOrder()" class="pay-now">提交订单</span></div>
+  </div>
+
+  <div class="empty-cart" ng-hide="hasCart()">
+    <div class="content">
+      <p class="mark">空</p>
+      <div>
+        <i class="ion-ios-cart"></i>
+        <div class="word">
+          <p>购物车，空空如也</p>
+          <p>去 <a href="#/tab/today" class="today"><i class="ion-ios-paper-outline"></i> 今日菜谱</a></p>
+          <p>选择心仪的美味吧！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-view>

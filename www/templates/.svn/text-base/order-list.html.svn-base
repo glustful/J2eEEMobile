@@ -1,0 +1,51 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+    <div class="tabs" style="border-bottom:1px solid #eee;">
+      <span class="tab-item" ng-class="{'active': tabIndex==1}" ng-click="getOrderList(10)">未付款 <em ng-show="unpaidCount">{{ unpaidCount }}</em></span>
+      <span class="tab-item" ng-class="{'active': tabIndex==2}" ng-click="getOrderList(70)">已付款</span>
+      <span class="tab-item" ng-class="{'active': tabIndex==3}" ng-click="getOrderList(50)">已取消</span>
+    </div>
+  </div>
+
+  <ion-content class="no-padding order-content" style="padding-top: 80px;" ng-show="!hasData">
+    <div style="text-align:center;"><img src="img/order-empty.png" style="width:128px;"></div>
+  </ion-content>
+
+  <ion-content class="no-padding order-content" style="" ng-show="hasData">
+    <ion-refresher style="top: -5px;" pulling-text="下拉刷新..." pulling-icon="ion-ios-arrow-thin-up" on-refresh="doRefresh(tabIndex)"></ion-refresher>
+    <div style="height:40px;"></div>
+    <ion-list class="list order-list" ng-repeat="order in orderList" show-delete="false" can-swipe="tabIndex==1">
+      <ion-item class="item order-item">
+        <div class="order-num row">
+          <div class="col"><span>订单号：{{ order.orderNo }}</span></div>
+          <div class="col order-amount"><span>总价：&yen; {{ order.amount }}元</span></div>
+        </div>
+        <div class="row order-food" ng-repeat="food in order.detailList">
+          <div class="col">
+            <img class="food-cover" ng-src="{{ imgHost }}{{ food.logo }}">
+          </div>
+          <div class="col col-75">
+            <p class="food-name">{{ food.typeName }}</p>
+            <p class="food-desc">{{ food.setTitle }}</p>
+            <div class="row" style="padding:0;">
+              <div class="col" style="padding:0;">&yen; {{ food.price }}</div>
+              <div class="col" style="padding:0;text-align:right;">x {{ food.count }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="line-height: 40px;padding-top: 0;padding-bottom: 0;"><span class="order-status">{{ order.statusName }}</span></div>
+          <div class="col order-status">
+            <button class="button button-small button-assertive" ng-show="order.status==10" ng-click="submitOrder(order)">付款</button>
+            <button class="button button-small button-outline button-assertive" ng-show="order.commentStatus==00" ng-click="orderComment(order)">评论</button>
+          </div>
+        </div>
+        <ion-option-button class="delete-item" ng-click="cancelOrder(order)" ng-show="tabIndex==1">取消</ion-option-button>
+      </ion-item>
+    </ion-list>
+
+    <div style="padding:0 15px;" ng-show="moreDataCanBeLoaded()">
+      <span class="button button-block button-light" ng-click="loadMore(tabIndex)">加载更多</span>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,50 @@
+<ion-view view-title="{{ title }}" hide-back-button="true" cache-view="false" hide-tabs>
+  <ion-nav-buttons side="right">
+    <button ng-click="backOrder()" class="button button-clear">关闭</button>
+  </ion-nav-buttons>
+  <ion-content class="no-padding cart-content">
+    <div>
+      <div class="row success-msg">
+        <div class="col" style="text-align:center;"><i class="ion-ios-checkmark-outline"></i></div>
+        <div class="col col-75">
+          <p style="font-weight:bold;margin-top:5px;margin-bottom:6px;">恭喜，您已订餐成功</p>
+          <p style="margin-bottom:0;">{{ tip }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="list item-thumbnail-left item-cart" ng-repeat="item in cartList">
+      <div class="item item-food">
+        <div class="row">
+          <div class="col">
+            <img class="cover" ng-src="{{ imgHost }}{{ item.logo }}">
+          </div>
+          <div class="col col-75">
+            <p class="food-name">{{ item.typeName }}</p>
+            <p class="food-desc">{{ item.setTitle }}</p>
+            <p class="food-price">&yen; {{ item.price }}</p>
+          </div>
+        </div>
+        <div class="row" style="padding-bottom:0;">
+          <div class="col"></div>
+          <div class="col col-75" style="text-align:right;">
+            <span style="display: inline-block;font-size: 13px;margin-top: 8px;margin-right: 2px;vertical-align: top;">购买数量</span>
+            <input class="food-count" type="text" value="{{ item.count }}"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list" style="margin-bottom:0;">
+      <div class="item item-address" style="border-bottom:0;">
+        <p>收货人：{{ contact }}</p>
+        <p>电话：{{ mobile }}</p>
+        <p class="address">送餐地址：{{ address }}</p>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="cart-footer">
+    <p style="font-weight:bold;">共 {{ totalOrderCount }} 份 / 实付款: &yen; {{ totalPrice | number:2 }}元</p>
+  </div>
+</ion-view>

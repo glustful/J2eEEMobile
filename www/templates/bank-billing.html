@@ -1,0 +1,23 @@
+<ion-view view-title="{{ title }}" cache-view="false" show-tabs>
+  <ion-content class="padding" style="padding: 0 0 35px 0;background-color:white;">
+    <ion-refresher style="top:-60px;" pulling-text="下拉刷新..." pulling-icon="ion-ios-arrow-thin-up" on-refresh="doRefresh()"></ion-refresher>
+
+    <div style="height:20px;"></div>
+    <div class="list billing" ng-repeat="billing in list">
+      <div class="item header">
+        <span>{{ billing.tradeTypeName }}</span><span class="split"></span><span>{{ billing.amount }}</span>
+      </div>
+
+      <div class="item">
+        <p>交易时间：{{ billing.tradeTimeStr }}</p>
+        <p>金额类型：{{ billing.balanceTypeName }}</p>
+        <p>收支类型：{{ billing.creditFlagName }}</p>
+        <p ng-if="billing.dataNo">交易单号：{{ billing.dataNo }}</p>
+      </div>
+    </div>
+
+    <div style="padding:0 15px;" ng-show="hasMore">
+      <span class="button button-block button-light" ng-click="loadMore()">加载更多</span>
+    </div>
+  </ion-content>
+</ion-view>

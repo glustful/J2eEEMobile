@@ -1,0 +1,16 @@
+<ion-view view-title="{{ title }}" cache-view="false" hide-tabs>
+  <ion-nav-buttons side="right">
+    <a href="#/tab/setting/address/new" class="button button-clear">新建</a>
+  </ion-nav-buttons>
+  <ion-content class="no-padding">
+    <ion-list class="list" show-delete="false" can-swipe="true">
+      <ion-item class="item item-address" ng-click="selectAddress(defaultAddress)" ng-repeat="address in addressList">
+        <p>收货人：{{ address.name }}</p>
+        <p>电话：{{ address.mobile }}</p>
+        <p class="address"><span style="color:#ff4200;padding-right:8px;" ng-show="address.status==20">[默认]</span>送餐地址：{{ address.address }}</p>
+        <ion-option-button class="default-item" ng-click="defaultAddress(address)">标记默认</ion-option-button>
+        <ion-option-button class="delete-item" ng-click="deleteAddress(address)">删除</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
